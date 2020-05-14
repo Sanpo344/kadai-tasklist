@@ -9,9 +9,14 @@
                 <div class="collapse navbar-collapse" id="nav-bar">
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
-                        <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-                        <li class="nav-item">{!! link_to_route('tasks.create', 'タスクを追加', [], ['class' => 'btn btn-primary']) !!}</li>
+                        @if (Auth::check())
+                            <li class="nav-item">{{ Auth::user()->name }}</li>
+                            <li class="nav-item">{!! link_to_route('logout.get', 'Logout', [], ['class' => 'nav-link']) !!}</li>
+                            <li class="nav-item">{!! link_to_route('tasks.create', 'タスクを追加', [], ['class' => 'btn btn-primary']) !!}</li>
+                        @else
+                            <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
+                            <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
+                        @endif
                     </ul>
                 </div>
             </nav>
