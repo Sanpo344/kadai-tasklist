@@ -22,4 +22,10 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
+//ユーザー機能
+Route::group(['middlware' => 'auth'], function () {
+    Route::resource('users', 'UserController', ['only' => ['index']]);
+    Route::resource('tasks', 'TasksController', ['only' => ['store', 'update', 'destroy']]);
+});
+
 Route::resource('tasks', 'TasksController');

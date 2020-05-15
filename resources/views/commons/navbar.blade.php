@@ -10,7 +10,6 @@
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav">
                         @if (Auth::check())
-                            <li class="nav-item">{{ Auth::user()->name }}</li>
                             <li class="nav-item">{!! link_to_route('logout.get', 'Logout', [], ['class' => 'nav-link']) !!}</li>
                             <li class="nav-item">{!! link_to_route('tasks.create', 'タスクを追加', [], ['class' => 'btn btn-primary']) !!}</li>
                         @else
